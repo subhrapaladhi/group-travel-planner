@@ -13,27 +13,34 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>{
   User.findById(req.user._id)
       .then(async(data)=>{
         let plansData = new Array();
-        data.plans.forEach(async(planid,index)=>{
-          await Plan.findById(planid)
-              .then((pdata)=>{
-                  console.log(pdata)
-                  plansData.push(pdata)
-                  if(index==data.plans.length-1){
-                    console.log({
-                      user: req.user,
-                      plans: plansData
-                    })
-                    res.render('dashboard', {
-                      user: req.user,
-                      plans: plansData
-                    })
-                  }
-              })
-        })      
+        // if(data.plans.length==0){
+        //   res.render('dashboard', {
+        //     user: req.user,
+        //     plans: plansData
+        //   })
+        // }else{
+        //   data.plans.forEach(async(planid,index)=>{
+        //     await Plan.findById(planid)
+        //         .then((pdata)=>{
+        //             plansData.push(pdata)
+        //             if(index==data.plans.length-1){
+        //               res.render('dashboard', {
+        //                 user: req.user,
+        //                 plans: plansData
+        //               })
+        //             }
+        //         })
+        //   })  
+        // }
+
+        Plan.find
       })
       .catch((err)=>{
         console.log(err)
       })
+
+  User.find()
+  res.send
 });
 
 router.get('/newplan', ensureAuthenticated,(req, res)=>{
@@ -74,9 +81,10 @@ router.get('/showDetails/:id',ensureAuthenticated,(req, res)=>{
 })
 
 router.post('/showDetails/:id',ensureAuthenticated,(req,res)=>{
+  console.log(req.body)
   Plan.findByIdAndUpdate(req.params.id,req.body,{new: true})
       .then((data)=>{
-        console.log(data);
+        console.log('showdeatils data====',data);
         res.redirect('/dashboard')
       })
 
@@ -97,6 +105,5 @@ router.post('/joinplan',ensureAuthenticated,(req,res)=>{
         console.log(err)
       })
 })
-
 
 module.exports = router;

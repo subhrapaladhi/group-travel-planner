@@ -44,14 +44,18 @@
                 <span class='names' style="font-weight: bold;text-decoration: none;"> Names</span>
                 <span class='acodes' style="font-weight: bold;"> Access Codes</span>
             </div>
-            <% plans.forEach((plan)=>{ %>
-            <div class="plans">
-                <span class='names'> <%= plan.place%></span>
-                <span class='acodes'> <%= plan._id%></span>
-            </div>
-            <% }) %>
-            <% }else{ %>
-            <h3>You Havent Made Any plans</h3>
-            <% } %>
-        
+            <ul>
+                <% plans.forEach((plan)=>{ %> 
+                    <li>
+                        <div class="plans">
+                            <a href= "/showDetails/<%= plan._id %>"><span class='names'> <%= plan.place%></span></a>
+                            <span class='acodes'> <%= plan._id %></span>
+                        </div>
+                    </li>
+                    
+                <% }) %>
+            </ul>
+    <% }else{ %>
+    <h3>You Havent Made Any plans</h3>
+    <% } %>
 </div>
