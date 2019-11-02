@@ -39,18 +39,19 @@
 <br>
 <br>
 <div id="list">
-    <% if(plans.length > 0) { %>
-    <div class="plans">
-        <span class='names' style="font-weight: bold;text-decoration: none;"> Names</span>
-        <span class='acodes' style="font-weight: bold;"> Access Codes</span>
-    </div>
-    <% plans.forEach((plan)=>{ %>
-    <div class="plans">
-        <span class='names'> <%= plan.name %></span>
-        <span class='acodes'> <%= plan.acode %></span>
-    </div>
-    <% }) %>
-    <% }else{ %>
-    <h3>You Havent Made Any plans</h3>
-    <% } %>
+    <% if(plans.length > 0) { %>
+            <div class="plans">
+                <span class='names' style="font-weight: bold;text-decoration: none;"> Names</span>
+                <span class='acodes' style="font-weight: bold;"> Access Codes</span>
+            </div>
+            <% plans.forEach((plan)=>{ %>
+            <div class="plans">
+                <span class='names'> <%= plan.name %></span>
+                <span class='acodes'> <%= plan.acode %></span>
+            </div>
+            <% }) %>
+            <% }else{ %>
+            <h3>You Havent Made Any plans</h3>
+            <% } %>
+        
 </div>

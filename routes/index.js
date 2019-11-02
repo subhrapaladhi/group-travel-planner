@@ -11,13 +11,16 @@ router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>{
   res.render('dashboard', {
-    user: req.user
+    user: req.user,
+    plans: new Array()
   })
 });
 
 router.get('/newplan', ensureAuthenticated,(req, res)=>{
-  res.render('newplan', {
-    user: req.user              // create newplan.ejs to render form for a new plan
+  let temp = new Array();
+  res.render('createnew', {
+    user: req.user,              // create newplan.ejs to render form for a new plan
+
   })                         
 })
 
