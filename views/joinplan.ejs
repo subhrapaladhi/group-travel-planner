@@ -1,12 +1,15 @@
+<h1 class="mt-4" style="font-size: 400%; text-align: center; color: darkblue;">Traveller Planner for the Groups</h1>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
-        <div class="card card-body">
+        <div class="card card-body" style="border: 2px solid black; box-shadow: cornflowerblue 5px 5px 5px;"> 
             <form action="/joinplan" method="POST">
                 <div class="form-group">
-                    <label for="key">Access Code</label>
+                    <label for="key" style="font-weight: 700; font-size: 200%;">Access Code</label>
                     <input type="text" id="key" name="key" class="form-control" placeholder="Enter Key Here" />
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Join Group</button>
+                <br>
+                <a href="/dashboard" class="btn btn-outline-success btn-block">Back</a>
             </form>
         </div>
     </div>
