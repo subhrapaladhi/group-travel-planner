@@ -5,8 +5,8 @@
                 <div class="form-group">
                     <label for="email">Place</label>
                     <% if(planData.place){ %>
-                    <input type="text" id="place" name="place" class="form-control"
-                        placeholder="Enter Place To Visit" value= <%= planData.place %> />
+                    <input type="text" id="place" name="place" class="form-control" placeholder="Enter Place To Visit"
+                        value="<%= planData.place %>" />
                     <% }else{ %>
                     <input type="text" id="place" name="place" class="form-control"
                         placeholder="Enter Place To Visit" />
@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="startDate">Start Date</label>
-                    <% if(planData.startDate){ %> 
+                    <% if(planData.startDate){ %>
                     <input type="date" id="startDate" name="startDate" class="form-control"
                         placeholder="Enter Start Date" value=<%= planData.startDate %> />
                     <% }else{ %>
@@ -25,11 +25,10 @@
                 <div class="form-group">
                     <label for="endDate">End Date</label>
                     <% if(planData.endDate){ %>
-                    <input type="date" id="endDate" name="endDate" class="form-control"
-                        placeholder="Enter End Date" value=<%= planData.endDate %> />
+                    <input type="date" id="endDate" name="endDate" class="form-control" placeholder="Enter End Date"
+                        value=<%= planData.endDate %> />
                     <% }else{ %>
-                    <input type="date" id="endDate" name="endDate" class="form-control"
-                        placeholder="Enter End Date" />
+                    <input type="date" id="endDate" name="endDate" class="form-control" placeholder="Enter End Date" />
                     <% } %>
                 </div>
                 <div class="form-group">
