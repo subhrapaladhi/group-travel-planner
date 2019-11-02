@@ -1,61 +1,27 @@
-<style>
-    #list {
-        padding: 10px;
-    }
-
-    .plans {
-        width: 800px;
-        border: 1px solid black;
-        margin-bottom: 1px;
-    }
-
-    .names {
-        display: inline-block;
-        width: 650px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: cadetblue;
-    }
-
-    .names:hover {
-        text-decoration: underline;
-    }
-
-    .acodes {
-        display: inline-block;
-        width: 100px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-weight: bold;
-        text-decoration: none;
-        color: cornflowerblue;
-    }
-</style>
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<a href="/joinplan" class="btn btn-secondary">Join A Plan</a>
-<a href="/newplan" class="btn btn-secondary">Create A Plan</a>
+<a href="/users/logout" class="btn btn-primary">Logout</a>
+<a href="/joinplan" class="btn btn-primary">Join A Plan</a>
+<a href="/newplan" class="btn btn-primary">Create A Plan</a>
 <br>
 <br>
-<div id="list">
-    <% if(plans.length > 0) { %>
-            <div class="plans">
-                <span class='names' style="font-weight: bold;text-decoration: none;"> Names</span>
-                <span class='acodes' style="font-weight: bold;"> Access Codes</span>
-            </div>
-            <ul>
-                <% plans.forEach((plan)=>{ %> 
-                    <li>
-                        <div class="plans">
-                            <a href= "/showDetails/<%= plan._id %>"><span class='names'> <%= plan.place%></span></a>
-                            <span class='acodes'> <%= plan._id %></span>
-                        </div>
-                    </li>
-                    
-                <% }) %>
-            </ul>
-    <% }else{ %>
+<% if(plans.length > 0) { %>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> Names</th>
+            <th> Access Key</th>
+        </tr>
+    </thead>
+    <tbody>
+           <% plans.forEach((plan)=>{ %>
+        <tr>
+            <td><a class="navbar-link" href="/showDetails/<%= plan._id %>"> <%= plan.place%> </a></td>
+            <td> <%= plan._id %> </td>
+        </tr>
+            <% }) %>
+    </tbody>
+</table>
+<% }else{ %>
     <h3>You Havent Made Any plans</h3>
-    <% } %>
-</div>
+<% } %>
