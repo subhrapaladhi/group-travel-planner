@@ -10,10 +10,30 @@ router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>{
-  res.render('dashboard', {
-    user: req.user,
-    plans: new Array()
-  })
+  User.findById(req.user._id)
+      .then(async(data)=>{
+        let plansData = new Array();
+        data.plans.forEach(async(planid,index)=>{
+          await Plan.findById(planid)
+              .then((pdata)=>{
+                  console.log(pdata)
+                  plansData.push(pdata)
+                  if(index==data.plans.length-1){
+                    console.log({
+                      user: req.user,
+                      plans: plansData
+                    })
+                    res.render('dashboard', {
+                      user: req.user,
+                      plans: plansData
+                    })
+                  }
+              })
+        })      
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
 });
 
 router.get('/newplan', ensureAuthenticated,(req, res)=>{
@@ -42,5 +62,41 @@ router.post('/newplan', ensureAuthenticated, (req, res)=>{
       })
   res.redirect('/dashboard')
 })
+
+router.get('/showDetails/:id',ensureAuthenticated,(req, res)=>{
+  Plan.findById(req.params.id)
+      .then((data)=>{
+        res.render('showdetails', {
+          user: req.user,
+          planData: data
+        }) 
+      })
+})
+
+router.post('/showDetails/:id',ensureAuthenticated,(req,res)=>{
+  Plan.findByIdAndUpdate(req.params.id,req.body,{new: true})
+      .then((data)=>{
+        console.log(data);
+        res.redirect('/dashboard')
+      })
+
+})
+
+router.get('/joinplan',ensureAuthenticated,(req,res)=>{
+  res.render('joinplan');
+})
+
+router.post('/joinplan',ensureAuthenticated,(req,res)=>{
+  req.user.plans.push(req.body.key);
+  User.findByIdAndUpdate(req.user._id, req.user,{new: true})
+      .then((data)=>{
+        console.log(data);
+        res.redirect('/dashboard')
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+})
+
 
 module.exports = router;

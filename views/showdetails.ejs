@@ -1,0 +1,49 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <form action="/newplan" method="POST">
+                <div class="form-group">
+                    <label for="email">Place</label>
+                    <% if(planData.place){ %>
+                    <input type="text" id="place" name="place" class="form-control"
+                        placeholder="Enter Place To Visit" value= <%= planData.place %> />
+                    <% }else{ %>
+                    <input type="text" id="place" name="place" class="form-control"
+                        placeholder="Enter Place To Visit" />
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <% if(planData.startDate){ %> 
+                    <input type="date" id="start_date" name="start_date" class="form-control"
+                        placeholder="Enter Start Date" value=planData.startDate />
+                    <% }else{ %>
+                    <input type="date" id="start_date" name="start_date" class="form-control"
+                        placeholder="Enter Start Date" />
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">End Date</label>
+                    <% if(planData.endData){ %>
+                    <input type="date" id="end_date" name="end_date" class="form-control"
+                        placeholder="Enter End Date" value=planData.endData />
+                    <% }else{ %>
+                    <input type="date" id="end_date" name="end_date" class="form-control"
+                        placeholder="Enter End Date" />
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="other_details">Details</label>
+                    <% if(planData.otherDetails){ %>
+                    <textarea id="other_details" name="other_details" class="form-control"
+                        placeholder="Enter Details" value=planData.otherDetails></textarea>
+                    <% }else{ %>
+                    <textarea id="other_details" name="other_details" class="form-control"
+                        placeholder="Enter Details"></textarea>
+                    <% } %>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Change Plan</button>
+            </form>
+        </div>
+    </div>
+</div>
