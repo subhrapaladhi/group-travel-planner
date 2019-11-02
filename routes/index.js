@@ -20,19 +20,21 @@ router.get('/newplan', ensureAuthenticated,(req, res)=>{
   let temp = new Array();
   res.render('createnew', {
     user: req.user,              // create newplan.ejs to render form for a new plan
-
   })                         
 })
 
 router.post('/newplan', ensureAuthenticated, (req, res)=>{
-  req.body.members.push(req.user._id)
+  req.body["members"]=[req.user._id]
+  console.log('req.user====', req.user)
   new Plan(req.body)
       .save()
       .then((plan)=>{
-        let userData = req.user.plans.push(plan["_id"])
+        console.log('plan ==== ', plan)
+        let userData = req.user;
+        userData.plans.push(plan._id)
         User.findByIdAndUpdate(req.user._id, userData, {new: true})
             .then((data)=>{
-              console.log(data)
+              console.log('data===',data)
             })
             .catch((err)=>{
               console.log(err)
