@@ -4,14 +4,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
+const bodyParser = require('body-parser');
 const app = express();
 
 // Passport Config
 require('./config/passport')(passport);
-
-// DB Config
-const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/travelmanager',{useNewUrlParser: true, useUnifiedTopology: true});
@@ -25,6 +22,9 @@ app.set('view engine', 'ejs');
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Express session
 app.use(
