@@ -1,7 +1,7 @@
 {
   "name": "group_travel_planner",
   "version": "1.0.0",
-  "description": "Node.js authentication with Passport",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

@@ -7,6 +7,9 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const app = express();
 
+const publicDir = require('path').join(__dirname,'/public');
+app.use(express.static(publicDir));
+
 require('dotenv').config();
 
 // Passport Config
