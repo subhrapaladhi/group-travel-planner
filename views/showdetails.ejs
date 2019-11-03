@@ -1,6 +1,9 @@
+<h1 class="mt-4" style="font-size: 400%; text-align: center; color: darkblue;">Traveller Planner for the Groups</h1>
+<br>
+<h2 style="text-align: center;">Edit Plan</h2>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
-        <div class="card card-body">
+        <div class="card card-body" style="border: 2px solid black; box-shadow: cornflowerblue 5px 5px 5px;">
             <form action="/showDetails/<%= planData._id %>" method="POST">
                 <div class="form-group">
                     <label for="email">Place</label>
@@ -41,7 +44,9 @@
                         placeholder="Enter Details"></textarea>
                     <% } %>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Change Plan</button>
+                <button type="submit" class="btn btn-info btn-block">Change Plan</button>
+                <br>
+                <a href="/dashboard" class="btn btn-outline-success btn-block" >Back</a>
             </form>
         </div>
     </div>

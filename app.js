@@ -7,11 +7,14 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const app = express();
 
+require('dotenv').config();
+
 // Passport Config
 require('./config/passport')(passport);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/travelmanager',{useNewUrlParser: true, useUnifiedTopology: true});
+let mongourl = process.env.mongourl
+mongoose.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection
         .once('open', ()=>console.log('connected to db'))
         .on('error',(error)=>console.log('connection to database failed'))

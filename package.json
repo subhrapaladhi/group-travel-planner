@@ -1,6 +1,6 @@
 {
-  "name": "node_passport_login",
-  "version": "2.0.0",
+  "name": "group_travel_planner",
+  "version": "1.0.0",
   "description": "Node.js authentication with Passport",
   "main": "app.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
@@ -24,5 +25,13 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subhrapaladhi/group-travel-planner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/subhrapaladhi/group-travel-planner/issues"
+  },
+  "homepage": "https://github.com/subhrapaladhi/group-travel-planner#readme"
 }
