@@ -24,7 +24,7 @@
     "passport-local": "^1.0.0"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.13.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
